@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans;
+    background:
+      radial-gradient(1200px 600px at 50% -200px, rgba(62, 224, 143, 0.08), transparent 60%),
+      radial-gradient(900px 500px at 90% 10%, rgba(139, 92, 246, 0.06), transparent 60%),
+      radial-gradient(800px 500px at 10% 30%, rgba(34, 211, 238, 0.05), transparent 60%),
+      #05070d;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: rgba(62, 224, 143, 0.25);
+    color: #f4f6fb;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #3ee08f;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-6 md:px-8;
+  }
+
+  .text-gradient {
+    background: linear-gradient(180deg, #ffffff 0%, #a4adc2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-accent {
+    background: linear-gradient(135deg, #5cffb1 0%, #3ee08f 40%, #22d3ee 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .surface {
+    @apply rounded-2xl border border-line bg-bg-card/80 backdrop-blur-sm;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.04) inset,
+      0 30px 60px -30px rgba(0, 0, 0, 0.6);
+  }
+
+  .surface-hover {
+    @apply transition-colors duration-200;
+  }
+  .surface-hover:hover {
+    @apply border-white/20;
+    background: rgba(20, 25, 40, 0.9);
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3 py-1 text-xs text-ink-muted;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-bg transition-colors duration-200;
+    background: linear-gradient(180deg, #5cffb1 0%, #3ee08f 100%);
+    box-shadow: 0 0 0 1px rgba(62, 224, 143, 0.5), 0 18px 40px -16px rgba(62, 224, 143, 0.55);
+    cursor: pointer;
+  }
+  .btn-primary:hover {
+    background: linear-gradient(180deg, #6effba 0%, #4cf09d 100%);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white/[0.03] px-5 py-2.5 text-sm font-medium text-ink transition-colors duration-200;
+    cursor: pointer;
+  }
+  .btn-secondary:hover {
+    @apply border-white/25 bg-white/[0.06];
+  }
+
+  .grid-bg {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Shiki code block tweaks */
+.shiki-pre {
+  @apply overflow-auto rounded-xl border border-line bg-[#0a0d16]/80 p-5 text-[13px] leading-[1.65] font-mono;
+}
+.shiki-pre code {
+  background: transparent !important;
+}
