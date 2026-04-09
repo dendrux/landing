@@ -3,6 +3,7 @@ import { CodeBlock } from "./code-block";
 import { InstallBlock } from "./install-block";
 import { GitHubIcon, ArrowRightIcon } from "./icons";
 import { Reveal } from "./reveal";
+import { TraceCard } from "./trace-card";
 
 const DendriticScene = dynamic(
   () => import("./dendritic-scene").then((m) => m.DendriticScene),
@@ -46,7 +47,7 @@ export function Hero() {
       </div>
 
       <div className="container-x relative">
-        <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
+        <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
           {/* Left: copy + CTAs */}
           <div className="relative z-10">
             <Reveal>
@@ -111,6 +112,12 @@ export function Hero() {
                   <span className="h-1.5 w-1.5 rounded-full bg-violet-glow" />
                   773 tests · 80% min coverage
                 </span>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.32} y={20}>
+              <div className="mt-8 max-w-xl">
+                <TraceCard />
               </div>
             </Reveal>
           </div>
