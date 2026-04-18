@@ -10,3 +10,6 @@ next-env.d.ts
 
 # Synced from dendrux repo at build time — see scripts/sync-docs.mjs
 content/docs
+
+# TS incremental build cache
+tsconfig.tsbuildinfo

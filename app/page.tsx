@@ -1,10 +1,9 @@
 import { Nav } from "@/components/nav";
 import { Hero } from "@/components/hero";
-import { Problem } from "@/components/problem";
 import { Pillars } from "@/components/pillars";
-import { CodeShowcase } from "@/components/code-showcase";
-import { Stats } from "@/components/stats";
-import { Providers } from "@/components/providers";
+import { LiveRun } from "@/components/live-run";
+import { PauseExplainer } from "@/components/pause-explainer";
+import { Features } from "@/components/features";
 import { CTA } from "@/components/cta";
 import { Footer } from "@/components/footer";
 
@@ -13,11 +12,10 @@ export default function HomePage() {
     <main className="relative">
       <Nav />
       <Hero />
-      <Problem />
+      <LiveRun />
       <Pillars />
-      <CodeShowcase />
-      <Stats />
-      <Providers />
+      <PauseExplainer />
+      <Features />
       <CTA />
       <Footer />
     </main>

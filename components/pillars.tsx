@@ -1,154 +1,105 @@
-import { Reveal } from "./reveal";
-import {
-  ShieldIcon,
-  GaugeIcon,
-  EyeIcon,
-  NetworkIcon,
-  PauseBridgeIcon,
-} from "./icons";
-import type { ComponentType, SVGProps } from "react";
+import type { ReactNode } from "react";
 
 type Pillar = {
-  number: string;
+  idx: string;
   title: string;
-  desc: string;
-  icon: ComponentType<SVGProps<SVGSVGElement>>;
-  bullets: string[];
-  accent: string;
+  body: string;
+  glyph: ReactNode;
 };
 
 const PILLARS: Pillar[] = [
   {
-    number: "01",
+    idx: "01",
     title: "Survive failure",
-    desc: "Durable writes, sweep stale runs, retry with prior context, idempotency keys. Runs never lie about state.",
-    icon: ShieldIcon,
-    bullets: ["Durable persistence", "Sweep + retry", "Idempotency keys"],
-    accent: "from-accent/30 to-transparent",
+    body: "Durable writes with retry. Stale runs swept. Crashed runs retry with prior context. Runs never lie about state.",
+    glyph: <circle cx="16" cy="16" r="10" />,
   },
   {
-    number: "02",
+    idx: "02",
     title: "Control execution",
-    desc: "Tool constraints, timeouts, parallel/sequential policy, delegation depth guards. The loop adapts — it doesn't crash.",
-    icon: GaugeIcon,
-    bullets: ["max_calls_per_run", "timeout_seconds", "parallel=False"],
-    accent: "from-cyan-glow/30 to-transparent",
+    body: "Tool constraints, timeouts, parallel/sequential policy, delegation depth guards. No runaways.",
+    glyph: <rect x="6" y="6" width="20" height="20" />,
   },
   {
-    number: "03",
+    idx: "03",
+    title: "Govern behavior",
+    body: "Tool deny, HITL approval, advisory budgets, PII redaction, secret detection — four layers of runtime governance.",
+    glyph: <path d="M16 4 L28 10 V20 C28 25 22 28 16 28 C10 28 4 25 4 20 V10 Z" />,
+  },
+  {
+    idx: "04",
     title: "Explain everything",
-    desc: "Every LLM call, tool execution, pause, and lifecycle event is persisted as evidence. Recorder fail-closed, notifier best-effort.",
-    icon: EyeIcon,
-    bullets: ["Full message traces", "Token usage + timing", "Redaction hooks"],
-    accent: "from-violet-glow/30 to-transparent",
+    body: "Every LLM call, tool execution, pause, and lifecycle event is persisted as evidence. Fail-closed recorder + best-effort notifier.",
+    glyph: (
+      <g>
+        <line x1="6" y1="10" x2="26" y2="10" />
+        <line x1="6" y1="16" x2="22" y2="16" />
+        <line x1="6" y1="22" x2="26" y2="22" />
+      </g>
+    ),
   },
   {
-    number: "04",
+    idx: "05",
     title: "Coordinate agents",
-    desc: "Use agents as tools inside other agents. Parent-child links tracked automatically via contextvars. Zero developer code.",
-    icon: NetworkIcon,
-    bullets: ["Parent-child linking", "Depth guards", "Lifecycle coupling"],
-    accent: "from-accent/30 to-transparent",
+    body: "Parent-child delegation with automatic linking via contextvars. Depth guards and lifecycle coupling.",
+    glyph: (
+      <g>
+        <circle cx="16" cy="6" r="3" />
+        <circle cx="7" cy="24" r="3" />
+        <circle cx="25" cy="24" r="3" />
+        <path d="M16 9 L7 21 M16 9 L25 21" />
+      </g>
+    ),
   },
   {
-    number: "05",
+    idx: "06",
     title: "Pause for the real world",
-    desc: "Define tools that run on the client — browser, mobile, Excel. The agent pauses, the bridge handles SSE + polling, the run resumes.",
-    icon: PauseBridgeIcon,
-    bullets: ["Client-tool bridge", "SSE + polling", "Pause / resume"],
-    accent: "from-cyan-glow/30 to-transparent",
+    body: "Client-side tool pause/resume for spreadsheets, browsers, and desktops. Domain-aware constraints.",
+    glyph: (
+      <g>
+        <line x1="12" y1="8" x2="12" y2="24" />
+        <line x1="20" y1="8" x2="20" y2="24" />
+      </g>
+    ),
   },
 ];
 
 export function Pillars() {
   return (
-    <section id="pillars" className="relative py-24 md:py-32">
-      <div className="container-x">
-        <div className="flex flex-col items-start gap-4 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-2xl">
-            <Reveal>
-              <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
-                {"// Five pillars"}
-              </p>
-            </Reveal>
-            <Reveal delay={0.05}>
-              <h2 className="mt-4 font-display text-3xl font-semibold leading-[1.1] tracking-tight text-gradient md:text-5xl">
-                Built around five
-                <br />
-                design commitments.
-              </h2>
-            </Reveal>
-          </div>
-          <Reveal delay={0.1}>
-            <p className="max-w-md text-[15px] text-ink-muted">
-              Each pillar maps to a real failure mode that breaks naive agent loops in
-              production. Dendrux makes the right behavior the default.
-            </p>
-          </Reveal>
-        </div>
-
-        <div className="mt-16 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {PILLARS.map((p, i) => (
-            <Reveal key={p.number} delay={i * 0.05}>
-              <PillarCard pillar={p} />
-            </Reveal>
-          ))}
-
-          {/* Last empty card with dendrite art */}
-          <Reveal delay={PILLARS.length * 0.05}>
-            <div className="surface relative flex h-full min-h-[260px] items-center justify-center overflow-hidden p-8">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/15 via-transparent to-violet-glow/10" />
-              <div className="absolute inset-0 grid-bg opacity-40" />
-              <div className="relative text-center">
-                <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
-                  Library, not a platform
-                </p>
-                <p className="mt-3 max-w-[260px] font-display text-xl font-medium text-ink">
-                  Own your server, your auth, your infra.
-                </p>
-                <p className="mt-3 text-sm text-ink-muted">
-                  Dendrux gives you <code className="font-mono text-accent">agent.run()</code>{" "}
-                  and gets out of the way.
-                </p>
-              </div>
+    <section className="proto-section" id="pillars">
+      <div className="proto-wrap">
+        <div className="eyebrow">Six pillars</div>
+        <h2
+          className="section-h2"
+          style={{ marginTop: 16, maxWidth: 720 }}
+        >
+          Six <em>commitments</em> the runtime makes.
+        </h2>
+        <p
+          style={{
+            marginTop: 16,
+            color: "var(--tok-text-sec)",
+            fontSize: 16,
+            maxWidth: 560,
+            lineHeight: 1.55,
+          }}
+        >
+          Every feature in dendrux exists to serve one of these. No framework magic, no
+          hidden loops.
+        </p>
+        <div className="pillars-grid">
+          {PILLARS.map((p) => (
+            <div className="pillar-cell" key={p.idx}>
+              <svg className="glyph" viewBox="0 0 32 32">
+                {p.glyph}
+              </svg>
+              <div className="idx">{p.idx}</div>
+              <h3>{p.title}</h3>
+              <p>{p.body}</p>
             </div>
-          </Reveal>
+          ))}
         </div>
       </div>
     </section>
-  );
-}
-
-function PillarCard({ pillar }: { pillar: Pillar }) {
-  const Icon = pillar.icon;
-  return (
-    <div className="surface surface-hover group relative h-full overflow-hidden p-7">
-      <div
-        className={`pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-gradient-to-br ${pillar.accent} opacity-60 blur-3xl transition-opacity duration-300 group-hover:opacity-100`}
-      />
-      <div className="relative">
-        <div className="flex items-center justify-between">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-white/[0.03] text-accent">
-            <Icon className="h-5 w-5" />
-          </div>
-          <span className="font-mono text-xs text-ink-dim">{pillar.number}</span>
-        </div>
-        <h3 className="mt-6 font-display text-xl font-semibold text-ink">
-          {pillar.title}
-        </h3>
-        <p className="mt-3 text-[14.5px] leading-[1.6] text-ink-muted">{pillar.desc}</p>
-        <ul className="mt-5 space-y-2">
-          {pillar.bullets.map((b) => (
-            <li
-              key={b}
-              className="flex items-center gap-2 font-mono text-[12px] text-ink-muted"
-            >
-              <span className="h-1 w-1 rounded-full bg-accent" />
-              {b}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
   );
 }

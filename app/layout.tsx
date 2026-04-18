@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { IBM_Plex_Sans, JetBrains_Mono, Space_Grotesk, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
 const plex = IBM_Plex_Sans({
@@ -20,6 +20,14 @@ const display = Space_Grotesk({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-display",
+  display: "swap",
+});
+
+const serif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
   display: "swap",
 });
 
@@ -53,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${plex.variable} ${mono.variable} ${display.variable}`}>
+    <html lang="en" className={`${plex.variable} ${mono.variable} ${display.variable} ${serif.variable}`}>
       <body>{children}</body>
     </html>
   );
