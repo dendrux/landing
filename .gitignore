@@ -7,3 +7,6 @@ out
 .vercel
 next-env.d.ts
 .claude
+
+# Synced from dendrux repo at build time — see scripts/sync-docs.mjs
+content/docs

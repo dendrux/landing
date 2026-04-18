@@ -120,7 +120,7 @@ export function TraceCard() {
   const isDone = shown.some((e) => e.kind === "done");
 
   return (
-    <div className="surface relative overflow-hidden">
+    <div className="surface pulse-border relative">
       {/* Soft top glow */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent" />
 
@@ -191,12 +191,6 @@ export function TraceCard() {
         </div>
       </div>
 
-      {/* Streaming caret bar */}
-      {!isDone && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px overflow-hidden">
-          <div className="h-full w-1/3 animate-[shimmer_2.4s_linear_infinite] bg-gradient-to-r from-transparent via-accent/70 to-transparent" />
-        </div>
-      )}
     </div>
   );
 }

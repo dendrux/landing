@@ -40,12 +40,7 @@ export function Nav() {
           <a href="#providers" className="transition-colors hover:text-ink">
             Providers
           </a>
-          <a
-            href="https://github.com/dendrux/dendrux"
-            className="transition-colors hover:text-ink"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="/docs" className="transition-colors hover:text-ink">
             Docs
           </a>
         </div>

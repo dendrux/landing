@@ -36,17 +36,26 @@ export function Hero() {
       {/* Background grid */}
       <div className="pointer-events-none absolute inset-0 grid-bg opacity-70" />
 
-      {/* 3D scene as ambient backdrop on the right */}
-      <div className="pointer-events-none absolute right-[-10%] top-10 hidden h-[680px] w-[680px] opacity-90 md:block lg:right-[-4%]">
-        <DendriticScene />
-      </div>
-
       {/* Mobile 3D scene (smaller, centered behind) */}
       <div className="pointer-events-none absolute inset-x-0 top-20 mx-auto h-[420px] w-[420px] opacity-60 md:hidden">
         <DendriticScene />
       </div>
 
       <div className="container-x relative">
+        {/* 3D scene anchored to container right edge — left-fade mask so it
+            doesn't fight with the code block sitting in front of it */}
+        <div
+          className="pointer-events-none absolute right-[-280px] top-2 hidden h-[600px] w-[600px] opacity-85 md:block"
+          style={{
+            maskImage:
+              "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.18) 22%, rgba(0,0,0,0.6) 38%, black 55%)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.18) 22%, rgba(0,0,0,0.6) 38%, black 55%)",
+          }}
+        >
+          <DendriticScene />
+        </div>
+
         <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
           {/* Left: copy + CTAs */}
           <div className="relative z-10">
@@ -115,21 +124,37 @@ export function Hero() {
               </div>
             </Reveal>
 
-            <Reveal delay={0.32} y={20}>
-              <div className="mt-8 max-w-xl">
-                <TraceCard />
-              </div>
-            </Reveal>
           </div>
 
           {/* Right: code preview */}
           <Reveal delay={0.2} y={28} className="relative z-10">
             <div className="relative">
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-accent/20 via-cyan-glow/10 to-violet-glow/15 opacity-60 blur-2xl" />
-              <CodeBlock code={HERO_CODE} filename="my_agent.py" lang="python" />
+              <CodeBlock
+                code={HERO_CODE}
+                filename="my_agent.py"
+                lang="python"
+                className="surface-glass"
+              />
             </div>
           </Reveal>
         </div>
+
+        {/* Live runtime trace — full-width row below the hero grid */}
+        <Reveal delay={0.4} y={24}>
+          <div className="relative z-10 mx-auto mt-20 max-w-3xl">
+            <div className="mb-4 flex items-center justify-center gap-3">
+              <span className="h-px w-12 bg-gradient-to-r from-transparent to-line" />
+              <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-dim">
+                ↓ what it looks like at runtime
+              </span>
+              <span className="h-px w-12 bg-gradient-to-l from-transparent to-line" />
+            </div>
+            <div className="min-h-[260px]">
+              <TraceCard />
+            </div>
+          </div>
+        </Reveal>
       </div>
 
       {/* Bottom fade */}
