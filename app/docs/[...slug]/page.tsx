@@ -6,47 +6,89 @@ import { DOCS_NAV } from "@/lib/docs-nav";
 
 type Params = { slug: string[] };
 
+function navEntryForPath(pathname: string) {
+  return DOCS_NAV.flatMap((s) => s.links).find((l) => l.slug === pathname);
+}
+
+/**
+ * Pre-render every slug that exists in the nav OR on disk. Union so nav-only
+ * entries (docs that haven't been written yet) become static "Coming soon"
+ * pages instead of 404s — the nav link stays clickable, the visitor gets a
+ * graceful placeholder, and the URL is indexable once the real content
+ * lands. Build time trades one extra static page per stub for one fewer
+ * broken link.
+ */
 export async function generateStaticParams(): Promise<Params[]> {
-  const all = await listAllDocs();
-  return all.map((slug) => ({ slug }));
+  const fromDisk = await listAllDocs();
+  const fromNav = DOCS_NAV.flatMap((s) => s.links)
+    .map((l) => l.slug)
+    .filter((s) => s.startsWith("/docs/") && s !== "/docs")
+    .map((s) => s.replace(/^\/docs\//, "").split("/"));
+
+  const seen = new Set<string>();
+  const out: Params[] = [];
+  for (const slug of [...fromDisk, ...fromNav]) {
+    const key = slug.join("/");
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push({ slug });
+  }
+  return out;
 }
 
 export async function generateMetadata({ params }: { params: Params }) {
-  const doc = await loadDoc(params.slug);
-  if (!doc) return {};
   const pathname = `/docs/${params.slug.join("/")}`;
+  const doc = await loadDoc(params.slug);
+  const navEntry = navEntryForPath(pathname);
+
+  const title = doc?.frontmatter.title ?? navEntry?.title;
+  const description = doc?.frontmatter.description;
+
+  if (!title) return {};
   return {
-    title: `${doc.frontmatter.title} — Dendrux docs`,
-    description: doc.frontmatter.description,
+    title: `${title} — Dendrux docs`,
+    description,
     alternates: { canonical: pathname },
     openGraph: {
-      title: `${doc.frontmatter.title} — Dendrux docs`,
-      description: doc.frontmatter.description,
+      title: `${title} — Dendrux docs`,
+      description,
       url: pathname,
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${doc.frontmatter.title} — Dendrux docs`,
-      description: doc.frontmatter.description,
+      title: `${title} — Dendrux docs`,
+      description,
     },
+    // Coming-soon pages shouldn't be indexed until they have content.
+    ...(doc ? {} : { robots: { index: false, follow: true } }),
   };
 }
 
 export default async function DocPage({ params }: { params: Params }) {
+  const pathname = `/docs/${params.slug.join("/")}`;
   const doc = await loadDoc(params.slug);
-  if (!doc) notFound();
+  const navEntry = navEntryForPath(pathname);
 
-  const { prev, next } = neighbors(`/docs/${params.slug.join("/")}`);
+  // Slug not in nav and no MDX → real 404.
+  if (!doc && !navEntry) notFound();
+
+  const { prev, next } = neighbors(pathname);
 
   return (
     <>
-      {doc.frontmatter.description && (
-        <p className="mb-8 text-[15px] text-ink-dim">
-          {doc.frontmatter.description}
-        </p>
+      {doc ? (
+        <>
+          {doc.frontmatter.description && (
+            <p className="mb-8 text-[15px] text-ink-dim">
+              {doc.frontmatter.description}
+            </p>
+          )}
+          <MdxContent source={doc.content} />
+        </>
+      ) : (
+        <ComingSoon title={navEntry!.title} />
       )}
-      <MdxContent source={doc.content} />
       {(prev || next) && (
         <nav className="mt-16 grid grid-cols-2 gap-4 border-t border-line pt-8">
           <div>
@@ -82,6 +124,36 @@ export default async function DocPage({ params }: { params: Params }) {
         </nav>
       )}
     </>
+  );
+}
+
+function ComingSoon({ title }: { title: string }) {
+  return (
+    <div className="surface mt-2 flex flex-col items-start gap-4 p-8">
+      <span className="pill">
+        <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+        Coming soon
+      </span>
+      <h1 className="font-display text-[28px] font-semibold leading-tight text-ink">
+        {title}
+      </h1>
+      <p className="max-w-[52ch] text-[15px] leading-[1.6] text-ink-muted">
+        This page is planned but not yet written. The implementation lives in the{" "}
+        <a
+          href="https://github.com/dendrux/dendrux"
+          target="_blank"
+          rel="noreferrer noopener"
+          className="text-accent underline decoration-accent/30 underline-offset-4 transition hover:decoration-accent"
+        >
+          dendrux repo
+        </a>
+        ; docs land here as they&apos;re finished. In the meantime, start with the{" "}
+        <Link href="/docs/quickstart" className="text-accent underline decoration-accent/30 underline-offset-4 transition hover:decoration-accent">
+          Quickstart
+        </Link>
+        .
+      </p>
+    </div>
   );
 }
 

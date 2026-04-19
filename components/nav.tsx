@@ -25,7 +25,7 @@ export function Nav() {
       </a>
       <span className="status-pill">
         <span className="dot" />
-        v0.1.0a5 · alpha
+        v0.2.0a1 · alpha
       </span>
       <a className="cta" href="/docs/quickstart">
         Get started <span>→</span>

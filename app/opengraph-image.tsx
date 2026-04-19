@@ -141,7 +141,7 @@ export default async function Image() {
         >
           <span>dendrux.dev</span>
           <span>·</span>
-          <span>v0.1.0a5 · alpha</span>
+          <span>v0.2.0a1 · alpha</span>
           <span>·</span>
           <span>Apache 2.0</span>
         </div>

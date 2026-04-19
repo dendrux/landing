@@ -7,7 +7,7 @@ export function CTA() {
         Scale without rewrites.
       </h2>
       <p>
-        Dendrux is in active development at v0.1.0a5. Core API stabilizing. Apache 2.0.
+        Dendrux is in active development at v0.2.0a1. Core API stabilizing. Apache 2.0.
         Bring your own infra.
       </p>
       <div className="cta-row">

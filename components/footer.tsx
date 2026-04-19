@@ -14,7 +14,7 @@ export function Footer() {
             and bridge to the real world.
           </div>
           <div className="meta-foot">
-            v0.1.0a5 · Apache 2.0 · 1,225 tests · 17,600+ loc
+            v0.2.0a1 · Apache 2.0 · 1,225 tests · 17,600+ loc
           </div>
         </div>
         <div>
