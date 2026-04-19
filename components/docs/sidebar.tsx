@@ -10,7 +10,7 @@ export function DocsSidebar() {
 
   return (
     <nav className="hidden md:block">
-      <div className="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-4 scrollbar-thin">
+      <div className="pr-4">
         {DOCS_NAV.map((section) => (
           <div key={section.title} className="mb-8">
             <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-dim">

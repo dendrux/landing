@@ -31,6 +31,10 @@ export const DOCS_NAV: NavSection[] = [
       { title: "Notifier", slug: "/docs/architecture/notifier" },
       { title: "Recorder", slug: "/docs/architecture/recorder" },
       { title: "Loops", slug: "/docs/architecture/loops" },
+      { title: "MCP", slug: "/docs/architecture/mcp" },
+      { title: "Skills", slug: "/docs/architecture/skills" },
+      { title: "Budget", slug: "/docs/architecture/budget" },
+      { title: "Prompt cache", slug: "/docs/architecture/prompt-cache" },
     ],
   },
   {
@@ -45,6 +49,7 @@ export const DOCS_NAV: NavSection[] = [
   {
     title: "Reference",
     links: [
+      { title: "HTTP API surface", slug: "/docs/reference/http-api" },
       { title: "Agent", slug: "/docs/reference/agent" },
       { title: "RunStore", slug: "/docs/reference/run-store" },
       { title: "make_read_router", slug: "/docs/reference/read-router" },
