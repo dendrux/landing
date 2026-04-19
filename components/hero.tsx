@@ -57,8 +57,8 @@ export function Hero() {
         </h1>
 
         <p className="hero-sub">
-          Durable agent runs that pause for humans and resume inside Excel, browsers,
-          and desktops. Every call and wait state is persisted as evidence.
+          Durable agent runs that survive crashes, pause for humans, and resume in any
+          client your users work in. Every call recorded as evidence.
         </p>
 
         <div className="hero-ctas">
