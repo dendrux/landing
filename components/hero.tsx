@@ -5,6 +5,7 @@ import { RunTimeline } from "./run-timeline";
 import { GitHubIcon } from "./icons";
 
 const HERO_CODE = `import asyncio
+import os
 from dendrux import Agent, tool
 from dendrux.llm.anthropic import AnthropicProvider
 
@@ -15,7 +16,10 @@ async def add(a: int, b: int) -> int:
 
 async def main():
     async with Agent(
-        provider=AnthropicProvider(model="claude-sonnet-4-6"),
+        provider=AnthropicProvider(
+            model="claude-sonnet-4-6",
+            api_key=os.environ["ANTHROPIC_API_KEY"],
+        ),
         prompt="You are a calculator.",
         tools=[add],
     ) as agent:
