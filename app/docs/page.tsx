@@ -1,6 +1,21 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { loadDoc } from "@/lib/docs";
 import { MdxContent } from "@/components/docs/mdx-content";
+
+export const metadata: Metadata = {
+  title: "Docs — Dendrux",
+  description:
+    "Dendrux docs: architecture, quickstart, and task-shaped recipes for the async Python agent runtime.",
+  alternates: { canonical: "/docs" },
+  openGraph: {
+    title: "Docs — Dendrux",
+    description:
+      "Dendrux docs: architecture, quickstart, and task-shaped recipes for the async Python agent runtime.",
+    url: "/docs",
+    type: "website",
+  },
+};
 
 export default async function DocsOverviewPage() {
   const doc = await loadDoc([]);

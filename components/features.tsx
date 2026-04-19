@@ -111,7 +111,7 @@ export function Features() {
             <h3 style={{ marginTop: 10 }}>Swap one import. Everything else stays.</h3>
             <p>
               Normalized surface across Anthropic, OpenAI Chat Completions, OpenAI
-              Responses — plus any compatible server.
+              Responses, plus any compatible server.
             </p>
             <div
               style={{

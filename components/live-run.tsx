@@ -12,7 +12,7 @@ export function LiveRun() {
       <div className="proto-wrap" style={{ position: "relative", zIndex: 2 }}>
         <div className="eyebrow">A live run</div>
         <h2 className="section-h2" style={{ marginTop: 16, maxWidth: 720 }}>
-          Every call, every pause, every resume — <em>recorded</em>.
+          Every call, every pause, every resume. <em>Recorded</em>.
         </h2>
         <p
           style={{
@@ -23,7 +23,7 @@ export function LiveRun() {
             lineHeight: 1.55,
           }}
         >
-          Click a node to inspect. The timeline is the dashboard — no JSON walls, no
+          Click a node to inspect. The timeline is the dashboard. No JSON walls, no
           decoration.
         </p>
         <div style={{ marginTop: 48 }}>

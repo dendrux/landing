@@ -21,8 +21,8 @@ export function PauseExplainer() {
                 WAITING_CLIENT_TOOL
               </code>
               . State is persisted. The client SDK executes on the user&apos;s device.
-              When results return, the run resumes from exactly where it left off — same
-              context, same reasoning.
+              When results return, the run resumes from exactly where it left off, with
+              the same context and reasoning.
             </p>
             <p
               style={{

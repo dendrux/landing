@@ -35,14 +35,18 @@ export const metadata: Metadata = {
   title: "Dendrux — The async Python runtime for agents that survive failure",
   description:
     "Dendrux is the async Python runtime for agents that survive failure, persist everything, and bridge to the real world. Tools as plain Python functions. State that doesn't lie.",
-  metadataBase: new URL("https://dendrux.dev"),
+  metadataBase: new URL("https://www.dendrux.dev"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Dendrux — Agents that survive failure",
     description:
       "The async Python runtime for agents that survive failure, persist everything, and bridge to the real world.",
-    url: "https://dendrux.dev",
+    url: "https://www.dendrux.dev",
     siteName: "Dendrux",
     type: "website",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
@@ -55,6 +59,44 @@ export const metadata: Metadata = {
   },
 };
 
+// Structured data — SoftwareSourceCode schema for the Python package
+// (Google uses this for rich results on dev-tool queries) plus Organization
+// so branded searches show a consistent entity card.
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.dendrux.dev/#org",
+      name: "Dendrux",
+      url: "https://www.dendrux.dev",
+      sameAs: [
+        "https://github.com/dendrux/dendrux",
+        "https://pypi.org/project/dendrux/",
+      ],
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://www.dendrux.dev/#package",
+      name: "dendrux",
+      description:
+        "The async Python runtime for agents that survive failure, persist everything, and bridge to the real world.",
+      codeRepository: "https://github.com/dendrux/dendrux",
+      programmingLanguage: "Python",
+      license: "https://www.apache.org/licenses/LICENSE-2.0",
+      url: "https://www.dendrux.dev",
+      author: { "@id": "https://www.dendrux.dev/#org" },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.dendrux.dev/#website",
+      url: "https://www.dendrux.dev",
+      name: "Dendrux",
+      publisher: { "@id": "https://www.dendrux.dev/#org" },
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -62,7 +104,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${plex.variable} ${mono.variable} ${display.variable} ${serif.variable}`}>
-      <body>{children}</body>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

@@ -600,12 +600,13 @@
 .hero-grid-v1 {
   margin-top: 70px;
   display: grid;
-  grid-template-columns: 1.1fr 1.3fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.3fr);
   gap: 48px;
   align-items: start;
 }
+.hero-grid-v1 > * { min-width: 0; }
 @media (max-width: 980px) {
-  .hero-grid-v1 { grid-template-columns: 1fr; }
+  .hero-grid-v1 { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ===== Code block (prototype style, tokens themed) ===== */
@@ -616,6 +617,8 @@
   overflow: hidden;
   box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(8px);
+  max-width: 100%;
+  min-width: 0;
 }
 .codeblock .cb-head {
   display: flex;
@@ -658,6 +661,8 @@
   background: color-mix(in oklab, var(--tok-surface) 92%, transparent);
   overflow: hidden;
   box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  max-width: 100%;
+  min-width: 0;
 }
 .timeline-head {
   padding: 18px 22px;
@@ -949,12 +954,13 @@
   background: var(--tok-surface);
   padding: 48px;
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
   gap: 48px;
   align-items: center;
   overflow: hidden;
   position: relative;
 }
+.pause-explainer > * { min-width: 0; }
 @media (max-width: 900px) {
   .pause-explainer { grid-template-columns: 1fr; padding: 32px; }
 }
@@ -1008,9 +1014,10 @@
 .features-grid {
   margin-top: 56px;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 20px;
 }
+.features-grid > * { min-width: 0; }
 .feat {
   border: 1px solid var(--tok-border);
   border-radius: 14px;

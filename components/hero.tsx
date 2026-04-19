@@ -57,9 +57,8 @@ export function Hero() {
         </h1>
 
         <p className="hero-sub">
-          Dendrux is the runtime that crashes, recovers, pauses for humans, and resumes
-          inside real-world clients — Excel, browsers, desktops. Every LLM call, tool
-          execution, and wait state is persisted as evidence.
+          Durable agent runs that pause for humans and resume inside Excel, browsers,
+          and desktops. Every call and wait state is persisted as evidence.
         </p>
 
         <div className="hero-ctas">

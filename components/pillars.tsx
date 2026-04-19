@@ -23,7 +23,7 @@ const PILLARS: Pillar[] = [
   {
     idx: "03",
     title: "Govern behavior",
-    body: "Tool deny, HITL approval, advisory budgets, PII redaction, secret detection — four layers of runtime governance.",
+    body: "Tool deny, HITL approval, advisory budgets, PII redaction, secret detection. Four layers of runtime governance.",
     glyph: <path d="M16 4 L28 10 V20 C28 25 22 28 16 28 C10 28 4 25 4 20 V10 Z" />,
   },
   {

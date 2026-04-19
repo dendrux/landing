@@ -14,9 +14,22 @@ export async function generateStaticParams(): Promise<Params[]> {
 export async function generateMetadata({ params }: { params: Params }) {
   const doc = await loadDoc(params.slug);
   if (!doc) return {};
+  const pathname = `/docs/${params.slug.join("/")}`;
   return {
     title: `${doc.frontmatter.title} — Dendrux docs`,
     description: doc.frontmatter.description,
+    alternates: { canonical: pathname },
+    openGraph: {
+      title: `${doc.frontmatter.title} — Dendrux docs`,
+      description: doc.frontmatter.description,
+      url: pathname,
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${doc.frontmatter.title} — Dendrux docs`,
+      description: doc.frontmatter.description,
+    },
   };
 }
 
