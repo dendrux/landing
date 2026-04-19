@@ -17,7 +17,7 @@ export function Nav() {
       <a
         href="https://github.com/dendrux/dendrux"
         target="_blank"
-        rel="noreferrer"
+        rel="noreferrer noopener"
         aria-label="Dendrux on GitHub"
         className="gh-link"
       >

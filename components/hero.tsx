@@ -70,7 +70,7 @@ export function Hero() {
             className="proto-btn proto-btn-ghost"
             href="https://github.com/dendrux/dendrux"
             target="_blank"
-            rel="noreferrer"
+            rel="noreferrer noopener"
           >
             <GitHubIcon className="h-4 w-4" />
             Star on GitHub

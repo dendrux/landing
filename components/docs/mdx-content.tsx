@@ -47,7 +47,7 @@ const components = {
       <a
         href={href}
         target="_blank"
-        rel="noreferrer"
+        rel="noreferrer noopener"
         {...rest}
         className="text-accent underline decoration-accent/30 underline-offset-4 transition hover:decoration-accent"
       />

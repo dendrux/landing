@@ -35,10 +35,12 @@ export function Footer() {
         </div>
         <div>
           <h4>Community</h4>
-          <a href="https://github.com/dendrux/dendrux">GitHub</a>
-          <a href="#">Discord</a>
-          <a href="#">Sponsor</a>
-          <a href="https://pypi.org/project/dendrux/">PyPI</a>
+          <a href="https://github.com/dendrux/dendrux" target="_blank" rel="noreferrer noopener">
+            GitHub
+          </a>
+          <a href="https://pypi.org/project/dendrux/" target="_blank" rel="noreferrer noopener">
+            PyPI
+          </a>
         </div>
       </div>
     </footer>

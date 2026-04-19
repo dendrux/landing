@@ -3,7 +3,9 @@ node_modules
 out
 .DS_Store
 *.log
-.env*.local
+.env
+.env.*
+!.env.example
 .vercel
 next-env.d.ts
 .claude

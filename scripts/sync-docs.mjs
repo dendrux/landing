@@ -20,13 +20,10 @@ import os from "node:os";
 const REPO_URL = process.env.DENDRUX_REPO_URL || "https://github.com/dendrux/dendrux.git";
 const REF = process.env.DENDRUX_DOCS_REF || "main";
 
-// Default local checkout — used only if it actually exists on disk. Falls
-// through to `git clone` otherwise, so CI (and anyone without this path)
-// still builds.
-const DEFAULT_LOCAL =
-  "/Users/anmolgautam/Desktop/finoco/Project-Orbit/excel-agent/dendrite/docs";
-
-const localPath = process.env.DENDRUX_DOCS_PATH || DEFAULT_LOCAL;
+// Set DENDRUX_DOCS_PATH in your shell profile for fast local iteration
+// (bypasses the clone). Unset → falls through to `git clone`, which is
+// what CI / Vercel uses.
+const localPath = process.env.DENDRUX_DOCS_PATH;
 const dest = path.resolve("content/docs");
 
 async function pathExists(p) {
@@ -68,9 +65,13 @@ async function cloneFromRepo() {
 }
 
 async function main() {
-  if (await pathExists(localPath)) {
+  if (localPath && (await pathExists(localPath))) {
     await copyFromLocal(localPath);
     return;
+  }
+  if (localPath) {
+    console.warn(`! DENDRUX_DOCS_PATH set but not found: ${localPath}`);
+    console.warn(`  falling back to git clone`);
   }
   await cloneFromRepo();
 }

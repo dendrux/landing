@@ -17,7 +17,13 @@ export type DocPage = {
 
 /** Load one MDX page by slug array. `[]` resolves to overview.mdx. */
 export async function loadDoc(slug: string[]): Promise<DocPage | null> {
+  if (!isSafeSlug(slug)) return null;
   const candidates = resolveCandidates(slug);
+  // Belt-and-suspenders: after path.join, require the resolved absolute path
+  // to stay under DOCS_ROOT. Defeats any clever unicode/encoded traversal.
+  for (const c of candidates) {
+    if (!path.resolve(c).startsWith(DOCS_ROOT + path.sep)) return null;
+  }
   for (const filePath of candidates) {
     try {
       const raw = await readFile(filePath, "utf8");
@@ -35,6 +41,12 @@ export async function loadDoc(slug: string[]): Promise<DocPage | null> {
     }
   }
   return null;
+}
+
+function isSafeSlug(slug: string[]): boolean {
+  return slug.every(
+    (s) => typeof s === "string" && s.length > 0 && !/[\0/\\]|^\.\.?$/.test(s),
+  );
 }
 
 function resolveCandidates(slug: string[]): string[] {
