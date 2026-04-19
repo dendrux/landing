@@ -1,13 +1,9 @@
-const PROVIDERS = [
-  "Anthropic",
-  "OpenAI Chat",
-  "OpenAI Responses",
-  "vLLM",
-  "SGLang",
-  "Groq",
-  "Together",
-  "Ollama",
-];
+// First-class provider implementations in dendrux.
+const PRIMARY_PROVIDERS = ["Anthropic", "OpenAI Chat", "OpenAI Responses"];
+
+// OpenAI-compatible endpoints — reached via OpenAIProvider with a custom
+// base_url, not separate provider classes.
+const OPENAI_COMPATIBLE = ["vLLM", "SGLang", "Groq", "Together", "Ollama"];
 
 export function Features() {
   return (
@@ -110,23 +106,62 @@ export function Features() {
             <div className="tag">Providers</div>
             <h3 style={{ marginTop: 10 }}>Swap one import. Everything else stays.</h3>
             <p>
-              Normalized surface across Anthropic, OpenAI Chat Completions, OpenAI
-              Responses, plus any compatible server.
+              Three first-class provider classes. Any OpenAI-compatible server works
+              through <code className="mono" style={{ color: "var(--tok-accent-soft)" }}>OpenAIProvider</code>{" "}
+              with a custom base_url.
             </p>
             <div
               style={{
-                marginTop: 28,
+                marginTop: 24,
                 display: "flex",
-                gap: 10,
-                flexWrap: "wrap",
+                flexDirection: "column",
+                gap: 14,
               }}
             >
-              {PROVIDERS.map((name) => (
-                <span key={name} className="prov-chip">
-                  <span className="dot" />
-                  {name}
-                </span>
-              ))}
+              <div>
+                <div
+                  className="mono"
+                  style={{
+                    fontSize: 10,
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    color: "var(--tok-text-muted)",
+                    marginBottom: 8,
+                  }}
+                >
+                  First-class
+                </div>
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  {PRIMARY_PROVIDERS.map((name) => (
+                    <span key={name} className="prov-chip">
+                      <span className="dot" />
+                      {name}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <div
+                  className="mono"
+                  style={{
+                    fontSize: 10,
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    color: "var(--tok-text-muted)",
+                    marginBottom: 8,
+                  }}
+                >
+                  OpenAI-compatible · via OpenAIProvider(base_url=…)
+                </div>
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  {OPENAI_COMPATIBLE.map((name) => (
+                    <span key={name} className="prov-chip">
+                      <span className="dot" />
+                      {name}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>

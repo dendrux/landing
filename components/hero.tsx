@@ -9,17 +9,17 @@ from dendrux import Agent, tool
 from dendrux.llm.anthropic import AnthropicProvider
 
 @tool()
-async def search(query: str) -> str:
-    """Search the web."""
-    return await web.query(query)
+async def add(a: int, b: int) -> int:
+    """Add two numbers."""
+    return a + b
 
 async def main():
     async with Agent(
         provider=AnthropicProvider(model="claude-sonnet-4-6"),
-        prompt="You are a research assistant.",
-        tools=[search],
+        prompt="You are a calculator.",
+        tools=[add],
     ) as agent:
-        result = await agent.run("What is dendrux?")
+        result = await agent.run("What is 15 + 27?")
         print(result.answer)
 
 asyncio.run(main())`;
