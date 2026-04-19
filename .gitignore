@@ -13,3 +13,6 @@ content/docs
 
 # TS incremental build cache
 tsconfig.tsbuildinfo
+
+# Local design-reference prototype (kept on disk, not pushed)
+dendrux_claude_design_prototype/
