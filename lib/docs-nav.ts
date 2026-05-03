@@ -49,6 +49,7 @@ export const DOCS_NAV: NavSection[] = [
       { title: "Client-side tools", slug: "/docs/recipes/client-tools" },
       { title: "Cancelling a run", slug: "/docs/recipes/cancel-run" },
       { title: "Mounting the read router", slug: "/docs/recipes/mount-read-router" },
+      { title: "OpenTelemetry", slug: "/docs/recipes/opentelemetry" },
     ],
   },
   {
