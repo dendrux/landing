@@ -50,6 +50,7 @@ export const DOCS_NAV: NavSection[] = [
       { title: "Chatbot threads", slug: "/docs/recipes/chatbot-threads" },
       { title: "Cancelling a run", slug: "/docs/recipes/cancel-run" },
       { title: "Mounting the read router", slug: "/docs/recipes/mount-read-router" },
+      { title: "Observability stack", slug: "/docs/recipes/observability" },
       { title: "OpenTelemetry", slug: "/docs/recipes/opentelemetry" },
     ],
   },
