@@ -3,10 +3,12 @@ import rehypePrettyCode from "rehype-pretty-code";
 import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import type { ComponentProps } from "react";
+import { Mermaid } from "./mermaid";
 import { SchemaDiagram, SchemaItem } from "./schema-diagram";
 import { SequenceFlow, SequenceEvent } from "./sequence-flow";
 
 const components = {
+  Mermaid,
   SchemaDiagram,
   SchemaItem,
   SequenceFlow,
