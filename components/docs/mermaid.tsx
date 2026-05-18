@@ -13,7 +13,8 @@ interface MermaidProps {
  * Dynamically imports the mermaid bundle so other pages don't pay
  * the cost.
  *
- * Usage in MDX:
+ * Usage in MDX (requires `blockJS: false` on MDXRemote so the JSX
+ * expression prop survives the next-mdx-remote default sweep):
  *
  *   <Mermaid chart={`flowchart TD
  *       A[Start] --> B[End]

@@ -119,6 +119,11 @@ export function MdxContent({ source }: { source: string }) {
       source={source}
       components={components}
       options={{
+        // Allow JSX expression props/children in MDX (e.g. `<Mermaid chart={`...`} />`).
+        // Default `blockJS: true` strips every `{...}` expression before compile.
+        // We own the MDX source so the security tradeoff is fine; dangerous-calls
+        // sweep is still on via blockDangerousJS default.
+        blockJS: false,
         mdxOptions: {
           remarkPlugins: [remarkGfm],
           rehypePlugins: [[rehypePrettyCode, prettyCodeOptions]],
