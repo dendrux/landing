@@ -37,10 +37,17 @@ export function Mermaid({ chart }: MermaidProps) {
           securityLevel: "loose",
           flowchart: { curve: "basis", useMaxWidth: true },
         });
-        // Validate first so we get a clean parser error instead of an
-        // internal mermaid stack trace on bad syntax.
-        await mermaid.parse(chart);
-        const { svg: rendered } = await mermaid.render(idRef.current, chart);
+        // Dedent the chart — MDX template literals preserve leading
+        // whitespace that confuses mermaid's parser on some lines.
+        const dedented = chart
+          .split("\n")
+          .map((line) => line.replace(/^ +/, ""))
+          .join("\n")
+          .trim();
+        // No mermaid.parse() preflight — v11 has a regression where
+        // parse() itself throws an internal "Cannot read properties of
+        // undefined (reading 'replace')" on charts that render fine.
+        const { svg: rendered } = await mermaid.render(idRef.current, dedented);
         if (!cancelled) setSvg(rendered);
       } catch (err) {
         const message = err instanceof Error ? err.message : String(err);
