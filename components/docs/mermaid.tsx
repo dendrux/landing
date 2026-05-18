@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface MermaidProps {
   chart: string;
@@ -20,7 +20,9 @@ interface MermaidProps {
  *   `} />
  */
 export function Mermaid({ chart }: MermaidProps) {
-  const reactId = useId();
+  // Stable id per mount — avoids useId quirks in some Next.js RSC paths
+  // and gives mermaid a clean DOM identifier to mutate.
+  const idRef = useRef(`mermaid-${Math.random().toString(36).slice(2, 11)}`);
   const [svg, setSvg] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
 
@@ -32,28 +34,13 @@ export function Mermaid({ chart }: MermaidProps) {
         mermaid.initialize({
           startOnLoad: false,
           theme: "dark",
-          themeVariables: {
-            background: "transparent",
-            primaryColor: "#15192a",
-            primaryTextColor: "#e8e8ee",
-            primaryBorderColor: "#3a4258",
-            lineColor: "#6b7280",
-            secondaryColor: "#1a1f2e",
-            tertiaryColor: "#0d1018",
-            fontFamily:
-              "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace",
-            fontSize: "14px",
-          },
-          flowchart: {
-            curve: "basis",
-            padding: 20,
-            nodeSpacing: 50,
-            rankSpacing: 60,
-            useMaxWidth: true,
-          },
+          securityLevel: "loose",
+          flowchart: { curve: "basis", useMaxWidth: true },
         });
-        const id = `mermaid-${reactId.replace(/[^a-zA-Z0-9]/g, "")}`;
-        const { svg: rendered } = await mermaid.render(id, chart);
+        // Validate first so we get a clean parser error instead of an
+        // internal mermaid stack trace on bad syntax.
+        await mermaid.parse(chart);
+        const { svg: rendered } = await mermaid.render(idRef.current, chart);
         if (!cancelled) setSvg(rendered);
       } catch (err) {
         const message = err instanceof Error ? err.message : String(err);
@@ -63,7 +50,7 @@ export function Mermaid({ chart }: MermaidProps) {
     return () => {
       cancelled = true;
     };
-  }, [chart, reactId]);
+  }, [chart]);
 
   if (error) {
     return (
