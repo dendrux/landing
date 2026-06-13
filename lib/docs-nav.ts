@@ -58,11 +58,12 @@ export const DOCS_NAV: NavSection[] = [
   {
     title: "Reference",
     links: [
-      { title: "HTTP API surface", slug: "/docs/reference/http-api" },
+      { title: "API glossary", slug: "/docs/reference/api-glossary" },
       { title: "Agent", slug: "/docs/reference/agent" },
       { title: "RunStore", slug: "/docs/reference/run-store" },
       { title: "make_read_router", slug: "/docs/reference/read-router" },
       { title: "Errors", slug: "/docs/reference/errors" },
+      { title: "HTTP API surface", slug: "/docs/reference/http-api" },
     ],
   },
 ];
