@@ -44,25 +44,26 @@ export function Hero() {
       </div>
 
       <div className="hero-inner">
-        <div className="eyebrow">The async Python runtime for production agents</div>
+        <div className="eyebrow">The async Python runtime for resumable agents</div>
 
         <h1 className="h1" style={{ marginTop: 24 }}>
           <span className="line">
             <span>
-              Agents that <em>survive</em>
+              Agents that <em>pause</em>
             </span>
           </span>
           <span className="line">
-            <span>failure, persist</span>
+            <span>and resume</span>
           </span>
           <span className="line">
-            <span>everything.</span>
+            <span>anywhere.</span>
           </span>
         </h1>
 
         <p className="hero-sub">
-          Durable agent runs that survive crashes, pause for humans, and resume in any
-          client your users work in. Every call recorded as evidence.
+          A run pauses for a human, an approval, or a tool in your user&apos;s browser,
+          persists its full state to your database, and resumes in any process, even after
+          a restart. Every step recorded as evidence.
         </p>
 
         <div className="hero-ctas">

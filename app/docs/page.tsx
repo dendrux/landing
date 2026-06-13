@@ -59,15 +59,15 @@ export default async function DocsOverviewPage() {
 const OVERVIEW_CARDS = [
   {
     eyebrow: "01",
-    title: "Architecture",
-    body: "How dendrux works under the hood — the run state machine, persistence, governance, and why each piece is shaped the way it is.",
-    href: "/docs/architecture/runs",
+    title: "Quickstart",
+    body: "Install and run a real pause/resume agent in five minutes. Two scripts, two processes, one database. Start here.",
+    href: "/docs/quickstart",
   },
   {
     eyebrow: "02",
-    title: "Quickstart",
-    body: "Install and run a real pause/resume agent in five minutes. Two scripts, two processes, one database.",
-    href: "/docs/quickstart",
+    title: "Architecture",
+    body: "How dendrux works under the hood — the run state machine, persistence, governance, and why each piece is shaped the way it is.",
+    href: "/docs/architecture/runs",
   },
   {
     eyebrow: "03",

@@ -11,7 +11,9 @@ export const DOCS_NAV: NavSection[] = [
     title: "Get started",
     links: [
       { title: "Overview", slug: "/docs" },
+      { title: "Is dendrux for you?", slug: "/docs/is-dendrux-for-you" },
       { title: "Quickstart", slug: "/docs/quickstart" },
+      { title: "How dendrux compares", slug: "/docs/how-dendrux-compares" },
     ],
   },
   {

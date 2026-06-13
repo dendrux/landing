@@ -10,24 +10,23 @@ type Pillar = {
 const PILLARS: Pillar[] = [
   {
     idx: "01",
-    title: "Survive failure",
-    body: "Durable writes with retry. Stale runs swept. Crashed runs retry with prior context. Runs never lie about state.",
-    glyph: <circle cx="16" cy="16" r="10" />,
+    title: "Pause for the real world",
+    body: "Stop for an approval, a human answer, or a tool that runs in the user's browser, spreadsheet, or desktop. The run resumes from any process, by ID.",
+    glyph: (
+      <g>
+        <line x1="12" y1="8" x2="12" y2="24" />
+        <line x1="20" y1="8" x2="20" y2="24" />
+      </g>
+    ),
   },
   {
     idx: "02",
-    title: "Control execution",
-    body: "Tool constraints, timeouts, parallel/sequential policy, delegation depth guards. No runaways.",
-    glyph: <rect x="6" y="6" width="20" height="20" />,
+    title: "Persist everything",
+    body: "Every run's full state lives in your database, not memory. A restart loses nothing: resume by ID. Reconcile stale runs with sweep(), restart terminal ones with retry(), both developer-invoked.",
+    glyph: <circle cx="16" cy="16" r="10" />,
   },
   {
     idx: "03",
-    title: "Govern behavior",
-    body: "Tool deny, HITL approval, advisory budgets, PII redaction, secret detection. Four layers of runtime governance.",
-    glyph: <path d="M16 4 L28 10 V20 C28 25 22 28 16 28 C10 28 4 25 4 20 V10 Z" />,
-  },
-  {
-    idx: "04",
     title: "Explain everything",
     body: "Every LLM call, tool execution, pause, and lifecycle event is persisted as evidence. Fail-closed recorder + best-effort notifier.",
     glyph: (
@@ -39,7 +38,19 @@ const PILLARS: Pillar[] = [
     ),
   },
   {
+    idx: "04",
+    title: "Govern behavior",
+    body: "Tool deny, HITL approval, advisory budgets, PII redaction, secret detection. Four layers of runtime governance.",
+    glyph: <path d="M16 4 L28 10 V20 C28 25 22 28 16 28 C10 28 4 25 4 20 V10 Z" />,
+  },
+  {
     idx: "05",
+    title: "Control execution",
+    body: "Tool constraints, timeouts, parallel/sequential policy, delegation depth guards. No runaways.",
+    glyph: <rect x="6" y="6" width="20" height="20" />,
+  },
+  {
+    idx: "06",
     title: "Coordinate agents",
     body: "Parent-child delegation with automatic linking via contextvars. Depth guards and lifecycle coupling.",
     glyph: (
@@ -48,17 +59,6 @@ const PILLARS: Pillar[] = [
         <circle cx="7" cy="24" r="3" />
         <circle cx="25" cy="24" r="3" />
         <path d="M16 9 L7 21 M16 9 L25 21" />
-      </g>
-    ),
-  },
-  {
-    idx: "06",
-    title: "Pause for the real world",
-    body: "Client-side tool pause/resume for spreadsheets, browsers, and desktops. Domain-aware constraints.",
-    glyph: (
-      <g>
-        <line x1="12" y1="8" x2="12" y2="24" />
-        <line x1="20" y1="8" x2="20" y2="24" />
       </g>
     ),
   },
