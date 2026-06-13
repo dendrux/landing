@@ -72,7 +72,7 @@ const OVERVIEW_CARDS = [
   {
     eyebrow: "03",
     title: "Recipes",
-    body: "Task-shaped guides for human-in-the-loop approval, browser-side tools, cancelling runs, and mounting the read router.",
-    href: "/docs/recipes/hitl-approval",
+    body: "Task-shaped guides: structuring your app database around Dendrux, human-in-the-loop approval, browser-side tools, cancelling runs, and mounting the read router.",
+    href: "/docs/recipes/app-database-boundary",
   },
 ];
