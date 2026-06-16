@@ -48,6 +48,7 @@ export const DOCS_NAV: NavSection[] = [
     title: "Recipes",
     links: [
       { title: "Your app DB vs the Dendrux DB", slug: "/docs/recipes/app-database-boundary" },
+      { title: "dendrux in a web or chat endpoint", slug: "/docs/recipes/web-endpoint" },
       { title: "Client-side tools", slug: "/docs/recipes/client-tools" },
       { title: "Chatbot threads", slug: "/docs/recipes/chatbot-threads" },
       { title: "Cancelling a run", slug: "/docs/recipes/cancel-run" },
