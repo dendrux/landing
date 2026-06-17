@@ -103,6 +103,58 @@ export function Features() {
           </div>
 
           <div className="feat span-12">
+            <div className="tag">Reasoning</div>
+            <h3 style={{ marginTop: 10 }}>Thinking, on one switch.</h3>
+            <p>
+              Extended thinking for Anthropic and OpenAI behind one uniform set of
+              controls. Off by default, so nothing changes until you ask for it. The
+              reasoning tokens — and the summary trace, where the vendor returns it —
+              land on every run result, stream, and dashboard.
+            </p>
+            <div
+              style={{
+                marginTop: 18,
+                padding: 14,
+                borderRadius: 8,
+                background: "color-mix(in oklab, var(--tok-bg) 60%, transparent)",
+                border: "1px solid var(--tok-border-soft)",
+                fontFamily: "var(--font-mono)",
+                fontSize: 12,
+                color: "var(--tok-text-sec)",
+              }}
+            >
+              AnthropicProvider(model=
+              <span style={{ color: "var(--tok-success)" }}>{'"claude-opus-4-8"'}</span>,
+              thinking=<span style={{ color: "var(--tok-accent-soft)" }}>True</span>,
+              effort=<span style={{ color: "var(--tok-success)" }}>{'"high"'}</span>)
+            </div>
+            <div
+              style={{
+                marginTop: 18,
+                display: "flex",
+                gap: 8,
+                flexWrap: "wrap",
+              }}
+            >
+              {["thinking", "effort", "show_thinking"].map((k) => (
+                <span
+                  key={k}
+                  className="mono"
+                  style={{
+                    fontSize: 11,
+                    padding: "4px 9px",
+                    border: "1px solid var(--tok-border)",
+                    borderRadius: 6,
+                    color: "var(--tok-accent-soft)",
+                  }}
+                >
+                  {k}=
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="feat span-12">
             <div className="tag">Providers</div>
             <h3 style={{ marginTop: 10 }}>Swap one import. Everything else stays.</h3>
             <p>

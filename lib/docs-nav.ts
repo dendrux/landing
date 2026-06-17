@@ -28,6 +28,8 @@ export const DOCS_NAV: NavSection[] = [
       { title: "Recorder", slug: "/docs/architecture/recorder" },
       { title: "MCP", slug: "/docs/architecture/mcp" },
       { title: "Skills", slug: "/docs/architecture/skills" },
+      { title: "Models and providers", slug: "/docs/architecture/models" },
+      { title: "Reasoning and thinking", slug: "/docs/architecture/reasoning" },
       { title: "Prompt cache", slug: "/docs/architecture/prompt-cache" },
     ],
   },
