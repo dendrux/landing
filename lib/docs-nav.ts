@@ -53,6 +53,7 @@ export const DOCS_NAV: NavSection[] = [
       { title: "dendrux in a web or chat endpoint", slug: "/docs/recipes/web-endpoint" },
       { title: "Client-side tools", slug: "/docs/recipes/client-tools" },
       { title: "Chatbot threads", slug: "/docs/recipes/chatbot-threads" },
+      { title: "Per-run context", slug: "/docs/recipes/context-blocks" },
       { title: "Cancelling a run", slug: "/docs/recipes/cancel-run" },
       { title: "Mounting the read router", slug: "/docs/recipes/mount-read-router" },
       { title: "Observability stack", slug: "/docs/recipes/observability" },

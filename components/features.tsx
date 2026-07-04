@@ -103,6 +103,59 @@ export function Features() {
           </div>
 
           <div className="feat span-12">
+            <div className="tag">Context</div>
+            <h3 style={{ marginTop: 10 }}>Per-run context that caches.</h3>
+            <p>
+              Pass retrieved docs, project instructions, or memory into a turn with{" "}
+              <span className="mono">context=</span>. Mark what never changes{" "}
+              <span className="mono">stable</span> and it folds into the cached prefix —
+              read back from cache on every later turn, on Anthropic and OpenAI alike.
+              Everything volatile rides the tail, so it never breaks the prefix.
+            </p>
+            <div
+              style={{
+                marginTop: 18,
+                padding: 14,
+                borderRadius: 8,
+                background: "color-mix(in oklab, var(--tok-bg) 60%, transparent)",
+                border: "1px solid var(--tok-border-soft)",
+                fontFamily: "var(--font-mono)",
+                fontSize: 12,
+                color: "var(--tok-text-sec)",
+              }}
+            >
+              agent.run(msg, context=[
+              <br />
+              &nbsp;&nbsp;ContextBlock(spec, placement=
+              <span style={{ color: "var(--tok-success)" }}>{'"stable"'}</span>)])
+            </div>
+            <div
+              style={{
+                marginTop: 18,
+                display: "flex",
+                gap: 8,
+                flexWrap: "wrap",
+              }}
+            >
+              {["context=", "placement=", "ContextBlock"].map((k) => (
+                <span
+                  key={k}
+                  className="mono"
+                  style={{
+                    fontSize: 11,
+                    padding: "4px 9px",
+                    border: "1px solid var(--tok-border)",
+                    borderRadius: 6,
+                    color: "var(--tok-accent-soft)",
+                  }}
+                >
+                  {k}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="feat span-12">
             <div className="tag">Reasoning</div>
             <h3 style={{ marginTop: 10 }}>Thinking, on one switch.</h3>
             <p>
