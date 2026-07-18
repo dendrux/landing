@@ -58,6 +58,7 @@ export const DOCS_NAV: NavSection[] = [
       { title: "Mounting the read router", slug: "/docs/recipes/mount-read-router" },
       { title: "Observability stack", slug: "/docs/recipes/observability" },
       { title: "OpenTelemetry", slug: "/docs/recipes/opentelemetry" },
+      { title: "OpenRouter models", slug: "/docs/recipes/openrouter" },
     ],
   },
   {

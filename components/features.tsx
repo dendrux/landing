@@ -1,5 +1,5 @@
 // First-class provider implementations in dendrux.
-const PRIMARY_PROVIDERS = ["Anthropic", "OpenAI Chat", "OpenAI Responses"];
+const PRIMARY_PROVIDERS = ["Anthropic", "OpenAI Chat", "OpenAI Responses", "OpenRouter"];
 
 // OpenAI-compatible endpoints — reached via OpenAIProvider with a custom
 // base_url, not separate provider classes.
@@ -211,8 +211,10 @@ export function Features() {
             <div className="tag">Providers</div>
             <h3 style={{ marginTop: 10 }}>Swap one import. Everything else stays.</h3>
             <p>
-              Three first-class provider classes. Any OpenAI-compatible server works
-              through <code className="mono" style={{ color: "var(--tok-accent-soft)" }}>OpenAIProvider</code>{" "}
+              Four first-class provider classes — including OpenRouter&apos;s open-source and
+              premium catalog with a native-tools capability guard and a queryable model
+              list. Any OpenAI-compatible server works through{" "}
+              <code className="mono" style={{ color: "var(--tok-accent-soft)" }}>OpenAIProvider</code>{" "}
               with a custom base_url.
             </p>
             <div
