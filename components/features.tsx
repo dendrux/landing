@@ -76,7 +76,7 @@ export function Features() {
             </div>
           </div>
 
-          <div className="feat span-4">
+          <div className="feat span-6">
             <div className="tag">Delegation</div>
             <h3 style={{ marginTop: 10 }}>Agents as tools.</h3>
             <p>
@@ -85,7 +85,7 @@ export function Features() {
             </p>
           </div>
 
-          <div className="feat span-4">
+          <div className="feat span-6">
             <div className="tag">Persistence</div>
             <h3 style={{ marginTop: 10 }}>SQLite to Postgres.</h3>
             <p>
@@ -93,13 +93,58 @@ export function Features() {
             </p>
           </div>
 
-          <div className="feat span-4">
+          <div className="feat span-12">
             <div className="tag">MCP</div>
-            <h3 style={{ marginTop: 10 }}>Tool source, not rival.</h3>
+            <h3 style={{ marginTop: 10 }}>A managed runtime, not just a client.</h3>
             <p>
-              MCP servers become dendrux tools automatically. Schema translated,
-              rate-limited, traced.
+              MCP servers become dendrux tools automatically — and one process-wide{" "}
+              <span className="mono">MCPRuntime</span> owns the connections. Shared
+              across agents and requests, isolated per tenant with lazily resolved
+              credentials, capped by capacity limits, protected by circuit breakers,
+              drained cleanly at shutdown, and observable through value-free lifecycle
+              events and snapshots.
             </p>
+            <div
+              style={{
+                marginTop: 18,
+                padding: 14,
+                borderRadius: 8,
+                background: "color-mix(in oklab, var(--tok-bg) 60%, transparent)",
+                border: "1px solid var(--tok-border-soft)",
+                fontFamily: "var(--font-mono)",
+                fontSize: 12,
+                color: "var(--tok-text-sec)",
+              }}
+            >
+              runtime.bind(connection_key=
+              <span style={{ color: "var(--tok-success)" }}>{'"github"'}</span>,
+              <br />
+              &nbsp;&nbsp;tenant_key=user.id, source=github).tools()
+            </div>
+            <div
+              style={{
+                marginTop: 18,
+                display: "flex",
+                gap: 8,
+                flexWrap: "wrap",
+              }}
+            >
+              {["MCPRuntime", "tenant_key=", "credentials=", "snapshot()"].map((k) => (
+                <span
+                  key={k}
+                  className="mono"
+                  style={{
+                    fontSize: 11,
+                    padding: "4px 9px",
+                    border: "1px solid var(--tok-border)",
+                    borderRadius: 6,
+                    color: "var(--tok-accent-soft)",
+                  }}
+                >
+                  {k}
+                </span>
+              ))}
+            </div>
           </div>
 
           <div className="feat span-12">
