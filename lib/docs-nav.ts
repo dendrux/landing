@@ -40,6 +40,7 @@ export const DOCS_NAV: NavSection[] = [
       { title: "Access control", slug: "/docs/architecture/access-control" },
       { title: "Approval", slug: "/docs/architecture/approval" },
       { title: "Budget", slug: "/docs/architecture/budget" },
+      { title: "Cost and pricing", slug: "/docs/architecture/pricing" },
       { title: "Guardrails", slug: "/docs/architecture/guardrails" },
       { title: "PII redaction", slug: "/docs/architecture/pii-redaction" },
       { title: "Prompt injection patterns", slug: "/docs/recipes/prompt-injection-patterns" },
