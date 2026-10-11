@@ -54,6 +54,7 @@ export const DOCS_NAV: NavSection[] = [
       { title: "dendrux in a web or chat endpoint", slug: "/docs/recipes/web-endpoint" },
       { title: "Client-side tools", slug: "/docs/recipes/client-tools" },
       { title: "Chatbot threads", slug: "/docs/recipes/chatbot-threads" },
+      { title: "Memory across runs", slug: "/docs/recipes/run-replay" },
       { title: "Per-run context", slug: "/docs/recipes/context-blocks" },
       { title: "Cancelling a run", slug: "/docs/recipes/cancel-run" },
       { title: "Mounting the read router", slug: "/docs/recipes/mount-read-router" },
@@ -67,6 +68,7 @@ export const DOCS_NAV: NavSection[] = [
     links: [
       { title: "API glossary", slug: "/docs/reference/api-glossary" },
       { title: "Agent", slug: "/docs/reference/agent" },
+      { title: "Tools", slug: "/docs/reference/tools" },
       { title: "RunStore", slug: "/docs/reference/run-store" },
       { title: "make_read_router", slug: "/docs/reference/read-router" },
       { title: "Errors", slug: "/docs/reference/errors" },
