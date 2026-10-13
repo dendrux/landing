@@ -55,6 +55,7 @@ export const DOCS_NAV: NavSection[] = [
       { title: "Client-side tools", slug: "/docs/recipes/client-tools" },
       { title: "Chatbot threads", slug: "/docs/recipes/chatbot-threads" },
       { title: "Memory across runs", slug: "/docs/recipes/run-replay" },
+      { title: "MCP OAuth in a web app", slug: "/docs/recipes/mcp-oauth-web" },
       { title: "Per-run context", slug: "/docs/recipes/context-blocks" },
       { title: "Cancelling a run", slug: "/docs/recipes/cancel-run" },
       { title: "Mounting the read router", slug: "/docs/recipes/mount-read-router" },
