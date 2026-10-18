@@ -201,6 +201,62 @@ export function Features() {
           </div>
 
           <div className="feat span-12">
+            <div className="tag">Images</div>
+            <h3 style={{ marginTop: 10 }}>Agents that see, stored by reference.</h3>
+            <p>
+              Images from users, tools, client-side screenshots, and MCP servers reach
+              the model on Anthropic, OpenAI, and OpenRouter — and survive pause, resume,
+              and replay. Each image is stored once per tenant and referenced everywhere,
+              never inlined as base64. Non-vision models get a typed error before any
+              request.
+            </p>
+            <div
+              style={{
+                marginTop: 18,
+                padding: 14,
+                borderRadius: 8,
+                background: "color-mix(in oklab, var(--tok-bg) 60%, transparent)",
+                border: "1px solid var(--tok-border-soft)",
+                fontFamily: "var(--font-mono)",
+                fontSize: 12,
+                color: "var(--tok-text-sec)",
+              }}
+            >
+              agent.run([
+              <span style={{ color: "var(--tok-success)" }}>{'"What is on this?"'}</span>,
+              Image.from_path(
+              <span style={{ color: "var(--tok-success)" }}>{'"shot.png"'}</span>)])
+              <br />
+              <span style={{ color: "var(--tok-text-muted)" }}>return</span>{" "}
+              ToolOutput(result, images=[Image.from_bytes(png)])
+            </div>
+            <div
+              style={{
+                marginTop: 18,
+                display: "flex",
+                gap: 8,
+                flexWrap: "wrap",
+              }}
+            >
+              {["Image", "ToolOutput", "ImagePolicy", "BlobStore"].map((k) => (
+                <span
+                  key={k}
+                  className="mono"
+                  style={{
+                    fontSize: 11,
+                    padding: "4px 9px",
+                    border: "1px solid var(--tok-border)",
+                    borderRadius: 6,
+                    color: "var(--tok-accent-soft)",
+                  }}
+                >
+                  {k}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="feat span-12">
             <div className="tag">Reasoning</div>
             <h3 style={{ marginTop: 10 }}>Thinking, on one switch.</h3>
             <p>
