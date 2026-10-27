@@ -22,7 +22,7 @@ export function Footer() {
           <a href="/#timeline">Timeline</a>
           <a href="/#pillars">Pillars</a>
           <a href="/#features">Features</a>
-          <a href="/docs">Dashboard</a>
+          <a href="/docs">Documentation</a>
         </div>
         <div>
           <h4>Developers</h4>

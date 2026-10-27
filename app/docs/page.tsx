@@ -72,7 +72,7 @@ const OVERVIEW_CARDS = [
   {
     eyebrow: "03",
     title: "Recipes",
-    body: "Task-shaped guides: structuring your app database around Dendrux, human-in-the-loop approval, browser-side tools, cancelling runs, and mounting the read router.",
+    body: "Task-shaped guides: structuring your app database around Dendrux, human-in-the-loop approval, browser-side tools, cancelling runs, building your own read routes, and handling provider errors.",
     href: "/docs/recipes/app-database-boundary",
   },
 ];

@@ -15,6 +15,62 @@ export function Features() {
         </h2>
 
         <div className="features-grid">
+          <div className="feat span-12">
+            <div className="tag">Trust</div>
+            <h3 style={{ marginTop: 10 }}>Safe by default for multi-tenant production.</h3>
+            <p>
+              Every entry point takes a tenant scope and never fails open. Provider
+              failures are typed errors with a safe message, never vendor text. Inputs,
+              results, streams, queues and live readers are bounded, with overrides.
+              Paused runs are fenced and bound to a pause id. Build your own read routes
+              on <span className="mono">RunStore</span>: pending state and a live feed
+              that show only what the runtime can prove.
+            </p>
+            <div
+              style={{
+                marginTop: 18,
+                padding: 14,
+                borderRadius: 8,
+                background: "color-mix(in oklab, var(--tok-bg) 60%, transparent)",
+                border: "1px solid var(--tok-border-soft)",
+                fontFamily: "var(--font-mono)",
+                fontSize: 12,
+                color: "var(--tok-text-sec)",
+              }}
+            >
+              agent = Agent(provider, strict_tenancy=
+              <span style={{ color: "var(--tok-accent-soft)" }}>True</span>, limits=Limits())
+              <br />
+              result = <span style={{ color: "var(--tok-text-muted)" }}>await</span>{" "}
+              agent.run(msg, tenant_id=
+              <span style={{ color: "var(--tok-success)" }}>{'"acme"'}</span>)
+            </div>
+            <div
+              style={{
+                marginTop: 18,
+                display: "flex",
+                gap: 8,
+                flexWrap: "wrap",
+              }}
+            >
+              {["tenant_id=", "strict_tenancy", "ProviderError", "RunStore.follow"].map((k) => (
+                <span
+                  key={k}
+                  className="mono"
+                  style={{
+                    fontSize: 11,
+                    padding: "4px 9px",
+                    border: "1px solid var(--tok-border)",
+                    borderRadius: 6,
+                    color: "var(--tok-accent-soft)",
+                  }}
+                >
+                  {k}
+                </span>
+              ))}
+            </div>
+          </div>
+
           <div className="feat span-6">
             <div className="tag">Governance</div>
             <h3 style={{ marginTop: 10 }}>Four layers, all kwargs.</h3>
@@ -80,8 +136,8 @@ export function Features() {
             <div className="tag">Delegation</div>
             <h3 style={{ marginTop: 10 }}>Agents as tools.</h3>
             <p>
-              Parent-child run linking via contextvars. Zero developer code. Dashboard
-              shows the full tree.
+              Parent-child run linking via contextvars. Zero developer code. The full
+              tree is readable through <span className="mono">RunStore</span>.
             </p>
           </div>
 
@@ -263,7 +319,7 @@ export function Features() {
               Extended thinking for Anthropic and OpenAI behind one uniform set of
               controls. Off by default, so nothing changes until you ask for it. The
               reasoning tokens — and the summary trace, where the vendor returns it —
-              land on every run result, stream, and dashboard.
+              land on every run result and stream.
             </p>
             <div
               style={{
