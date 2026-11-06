@@ -13,6 +13,7 @@ export const DOCS_NAV: NavSection[] = [
       { title: "Overview", slug: "/docs" },
       { title: "Is dendrux for you?", slug: "/docs/is-dendrux-for-you" },
       { title: "Quickstart", slug: "/docs/quickstart" },
+      { title: "Upgrading to 0.6.0", slug: "/docs/upgrading-to-0.6.0" },
       { title: "Upgrading to 0.5.0", slug: "/docs/upgrading-to-0.5.0" },
     ],
   },
@@ -54,7 +55,12 @@ export const DOCS_NAV: NavSection[] = [
   },
   {
     title: "Guides",
-    links: [{ title: "Scaling workers", slug: "/docs/guides/scaling" }],
+    links: [
+      { title: "Scaling workers", slug: "/docs/guides/scaling" },
+      { title: "Recovering a run", slug: "/docs/guides/recovery" },
+      { title: "MySQL and MariaDB", slug: "/docs/guides/mysql" },
+      { title: "Build your own store", slug: "/docs/guides/build-your-own-store" },
+    ],
   },
   {
     title: "Recipes",
@@ -85,7 +91,10 @@ export const DOCS_NAV: NavSection[] = [
       { title: "Agent", slug: "/docs/reference/agent" },
       { title: "Tools", slug: "/docs/reference/tools" },
       { title: "RunStore", slug: "/docs/reference/run-store" },
+      { title: "StateStore capabilities", slug: "/docs/reference/state-store" },
       { title: "Errors", slug: "/docs/reference/errors" },
+      { title: "Log codes", slug: "/docs/reference/log-codes" },
+      { title: "Database CLI", slug: "/docs/reference/cli" },
       { title: "HTTP integration", slug: "/docs/reference/http-api" },
     ],
   },
