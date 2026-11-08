@@ -18,11 +18,11 @@ export default async function Image() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          padding: "96px 100px",
-          background:
+          padding: "64px 100px",
+          backgroundColor: "#05070d",
+          backgroundImage:
             "radial-gradient(ellipse 60% 40% at 22% 18%, rgba(62,224,143,0.35), transparent 70%)," +
-            "radial-gradient(ellipse 50% 35% at 78% 82%, rgba(34,211,238,0.22), transparent 70%)," +
-            "#05070d",
+            "radial-gradient(ellipse 50% 35% at 78% 82%, rgba(34,211,238,0.22), transparent 70%)",
           color: "#f4f6fb",
           fontFamily: "sans-serif",
         }}
@@ -67,7 +67,7 @@ export default async function Image() {
         >
           <span
             style={{
-              display: "inline-block",
+              display: "flex",
               width: 40,
               height: 2,
               background: "#5cffb1",
@@ -141,7 +141,7 @@ export default async function Image() {
         >
           <span>dendrux.dev</span>
           <span>·</span>
-          <span>v0.2.0a1 · alpha</span>
+          <span>v0.6.0</span>
           <span>·</span>
           <span>Apache 2.0</span>
         </div>
